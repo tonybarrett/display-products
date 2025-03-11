@@ -2,14 +2,23 @@
     <h1>Products</h1>
 </div>
 <div id="body">
-    <div class="container-grid">
-        @for (product of productsToDisplay; track product.id) {
-            <div class="grid-item">{{product.id}}, {{product.name}}, {{product.data | json}}</div>
+    <div class="grid-container">
+        <!-- v17 syntax, different in lesser versions. This is more efficient -->
+        @for (product of productsToDisplay; track product.id) { 
+            <div>
+                <div>
+                    {{product.name}}
+                </div>
+                <div>
+                    {{getFeatures(product.data)}}
+                </div>
+            </div>
         }
     </div>
 </div>
 <div id="footer">
-    <!-- <input type="number" step="1"  name="num_columns" id="num_columns" [(ngModel)]="numColumns" pattern="^[0-9]+$" value="1" min="1" (ngModelChange)="changeGrid()" /> -->
-  <input type="number" step="1"  min="1" max={{maxPages}} name="page_number" id="page_number" [(ngModel)]="pageNumber" (ngModelChange)="onPageChange()"/>
+    <label for="page_number">Page: </label>
+    <!-- a event is fired when the page number is changed. This is how the pagination is handled -->
+    <input type="number" step="1"  min="1" max={{maxPages}} name="page_number" id="page_number" [(ngModel)]="pageNumber" (ngModelChange)="onPageChange()"/> 
 </div>
 
