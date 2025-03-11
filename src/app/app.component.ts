@@ -6,8 +6,7 @@ import { DisplayComponent } from './components/display/display.component';
   standalone: true,
   imports: [DisplayComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'display-products';
 }

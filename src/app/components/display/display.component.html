@@ -1,1 +1,15 @@
-<p>display works!</p>
+<div id="header">
+    <h1>Products</h1>
+</div>
+<div id="body">
+    <div class="container-grid">
+        @for (product of productsToDisplay; track product.id) {
+            <div class="grid-item">{{product.id}}, {{product.name}}, {{product.data | json}}</div>
+        }
+    </div>
+</div>
+<div id="footer">
+    <!-- <input type="number" step="1"  name="num_columns" id="num_columns" [(ngModel)]="numColumns" pattern="^[0-9]+$" value="1" min="1" (ngModelChange)="changeGrid()" /> -->
+  <input type="number" step="1"  min="1" max={{maxPages}} name="page_number" id="page_number" [(ngModel)]="pageNumber" (ngModelChange)="onPageChange()"/>
+</div>
+
